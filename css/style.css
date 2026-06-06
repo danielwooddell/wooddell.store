@@ -7987,11 +7987,11 @@ body.winterface-offline .interface-section .interface-shell {
   }
 
   .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-core {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-response[data-interface-response] {
-    min-height: 21.1rem;
+    min-height: 22.8rem;
   }
 }
 
@@ -8130,24 +8130,668 @@ body.winterface-offline .interface-section .interface-shell {
   transform: translateY(-0.08rem) scale(1.04) !important;
 }
 
+
+/* =========================
+   WINTERFACE.ONLINE CONTACT LAUNCH CARD
+========================= */
+
+.contact-launch-card {
+  width: min(var(--max-width), calc(100% - 3rem));
+  margin: 3.5rem auto 4rem;
+  padding: clamp(2rem, 4vw, 4.25rem);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: clamp(26px, 3vw, 44px);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.13), transparent 26%),
+    radial-gradient(circle at 94% 8%, rgba(56, 189, 248, 0.18), transparent 32%),
+    radial-gradient(circle at 82% 88%, rgba(236, 72, 153, 0.20), transparent 36%),
+    linear-gradient(135deg, rgba(107, 70, 150, 0.72), rgba(101, 74, 135, 0.62) 46%, rgba(56, 189, 248, 0.18));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 28px 90px rgba(0, 0, 0, 0.42),
+    0 0 58px rgba(139, 92, 246, 0.18);
+  backdrop-filter: blur(20px);
+}
+
+.contact-launch-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.035) 42.2% 42.8%, transparent 43% 100%);
+  background-size: 70px 70px, 70px 70px, 280px 280px;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.contact-launch-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.32), transparent 30%, transparent 70%, rgba(236, 72, 153, 0.32));
+  opacity: 0.35;
+  pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+}
+
+.contact-card-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.contact-card-copy .eyebrow {
+  color: var(--muted-strong);
+  margin-bottom: 1.5rem;
+}
+
+.contact-card-copy h2 {
+  max-width: 760px;
+  margin-bottom: 1.4rem;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.6rem, 6vw, 5.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.contact-card-copy h2 span {
+  display: inline-flex;
+  gap: 0.25em;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.contact-card-copy p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(199, 210, 254, 0.86);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.contact-card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(128px, 1fr));
+  justify-content: end;
+  align-items: center;
+  justify-self: end;
+  width: min(100%, 430px);
+  margin-top: 0;
+}
+
+.contact-card-actions .button {
+  width: 100%;
+  min-width: 128px;
+  min-height: 58px;
+  padding-inline: 1.65rem;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.contact-card-actions .button.primary {
+  box-shadow:
+    0 18px 46px rgba(56, 189, 248, 0.28),
+    0 0 38px rgba(139, 92, 246, 0.20);
+}
+
+.contact-card-actions .button.secondary {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.contact-card-actions .button.secondary:hover {
+  border-color: rgba(56, 189, 248, 0.56);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.22),
+    0 0 28px rgba(56, 189, 248, 0.16);
+}
+
+@media (max-width: 900px) {
+  .contact-card-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card-actions {
+    justify-content: start;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-launch-card {
+    width: min(100% - 2rem, var(--max-width));
+    margin-top: 2.25rem;
+    margin-bottom: 2.5rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-card-actions {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .contact-card-actions .button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   WInterface v3.5 Operational Command Alignment Fix
+   Normalizes the Operational mode core panel so its command bar aligns with
+   Active Pathways and Showcase Bay in normal desktop view.
+   Fullscreen/maximized mode remains untouched.
+========================= */
+
+@media (min-width: 901px) {
+  .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-core {
+    justify-content: flex-start;
+  }
+
+  .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-response[data-interface-response] {
+    min-height: 21.1rem;
+  }
+}
+
+
 /* =========================
    WINTERFACE PRIMARY RAIL STABILITY PATCH
-   Stabilizes the normal desktop Active Pathways console height so the left
-   navigation buttons keep a consistent, fuller shape when switching cards.
+   Keeps Active Pathways rail cards readable in normal desktop view without
+   inflating the full three-column WInterface grid. This prevents the right
+   Primary Signal / Live Systems stack and center player area from stretching
+   taller than Operational and Showcase modes.
    Scope: normal embedded desktop view only. Fullscreen, mobile, operational,
    and showcase modes are intentionally untouched.
 ========================= */
 
 @media (min-width: 1101px) {
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-grid {
-    min-height: 38.75rem;
+    min-height: 31rem;
   }
 
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-path-list {
-    grid-template-rows: repeat(6, minmax(4.65rem, 1fr));
+    grid-template-rows: repeat(6, minmax(4.2rem, auto));
   }
 
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-path {
-    min-height: 4.65rem;
+    min-height: 4.2rem;
   }
 }
+
+
+
+/* =========================
+   WFO 3.6 SECRET INTEL NORMAL-VIEW VIDEO SPACING GUARD
+   Preserves the latest WFO fixes while keeping the duplicated video player vertically balanced.
+   CSS-only: no button, rail, control, or fullscreen behavior changes.
+========================= */
+
+@media (min-width: 901px) {
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-core {
+    justify-content: center;
+  }
+
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-media-panel:not([hidden]) {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-response[data-interface-response] {
+    min-height: 0;
+  }
+}
+
+/* =========================================================
+   WFO WInterface Theme: Camaro RS Black / Hot Red / Chrome
+   Scope: WInterface section only
+   Source baseline: latest WFO build supplied by user
+   Notes: CSS-only theme. Preserves layout, interactions, video bays, and fixes.
+========================================================= */
+
+.interface-section {
+  --interface-accent-rgb: 255, 31, 58 !important;
+  --interface-accent: #ff1f3a !important;
+  --interface-accent-text: #ffd7dd !important;
+  --interface-accent-soft: rgba(255, 31, 58, 0.105) !important;
+  --interface-accent-border: rgba(255, 31, 58, 0.34) !important;
+  --interface-accent-border-strong: rgba(255, 93, 112, 0.62) !important;
+  --interface-accent-glow: rgba(255, 31, 58, 0.24) !important;
+  --chrome-soft: rgba(221, 229, 236, 0.16) !important;
+  --chrome-line: rgba(231, 237, 242, 0.32) !important;
+  --chrome-hard: rgba(246, 248, 250, 0.58) !important;
+  color: #e7ebef !important;
+  background:
+    radial-gradient(ellipse at 86% 5%, rgba(232, 238, 244, 0.18), transparent 15%),
+    radial-gradient(ellipse at 7% 94%, rgba(210, 218, 226, 0.12), transparent 22%),
+    radial-gradient(circle at 18% 10%, rgba(255, 31, 58, 0.11), transparent 27%),
+    linear-gradient(132deg, #08090b 0%, #030304 31%, #0b0d10 58%, #000000 100%) !important;
+  border-color: rgba(229, 235, 240, 0.26) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.055),
+    inset 0 0 88px rgba(0, 0, 0, 0.88),
+    inset 0 0 52px rgba(255, 31, 58, 0.045),
+    0 28px 84px rgba(0, 0, 0, 0.74),
+    0 0 34px rgba(255, 31, 58, 0.075) !important;
+}
+
+.interface-section.interface-system-set-primary,
+.interface-section.interface-system-set-operations,
+.interface-section.interface-system-set-media {
+  --interface-accent-rgb: 255, 31, 58 !important;
+  --interface-accent: #ff1f3a !important;
+  --interface-accent-text: #ffd7dd !important;
+  --interface-accent-soft: rgba(255, 31, 58, 0.105) !important;
+  --interface-accent-border: rgba(255, 31, 58, 0.34) !important;
+  --interface-accent-border-strong: rgba(255, 93, 112, 0.62) !important;
+  --interface-accent-glow: rgba(255, 31, 58, 0.24) !important;
+}
+
+.interface-section::before {
+  opacity: 0.78 !important;
+  background:
+    linear-gradient(104deg, transparent 0%, transparent 17%, rgba(255, 31, 58, 0.20) 18%, rgba(255, 31, 58, 0.05) 19.35%, transparent 21.25%, transparent 100%),
+    linear-gradient(105deg, transparent 0%, transparent 66%, rgba(244, 248, 250, 0.24) 67.1%, rgba(99, 105, 111, 0.13) 68.2%, transparent 70%, transparent 100%),
+    linear-gradient(90deg, rgba(230, 236, 241, 0.024) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(230, 236, 241, 0.018) 1px, transparent 1px) !important;
+  background-size: auto, auto, 92px 92px, 92px 92px !important;
+}
+
+.interface-section::after {
+  opacity: 0.82 !important;
+  background:
+    radial-gradient(ellipse at 90% 4%, rgba(239, 244, 248, 0.18), transparent 17%),
+    radial-gradient(ellipse at 84% 13%, rgba(121, 128, 136, 0.34), transparent 24%),
+    radial-gradient(circle at 11% 88%, rgba(232, 238, 244, 0.13), transparent 24%),
+    radial-gradient(circle at 70% 70%, rgba(255, 31, 58, 0.055), transparent 30%) !important;
+}
+
+.interface-section .interface-shell {
+  border-color: rgba(228, 234, 240, 0.28) !important;
+  background:
+    radial-gradient(ellipse at 92% 5%, rgba(246, 248, 250, 0.20), transparent 18%),
+    radial-gradient(ellipse at 5% 96%, rgba(185, 194, 202, 0.13), transparent 21%),
+    linear-gradient(145deg, rgba(27, 31, 35, 0.78), rgba(2, 3, 4, 0.96) 47%, rgba(0, 0, 0, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    inset 0 0 48px rgba(255, 255, 255, 0.024),
+    inset 0 0 70px rgba(255, 31, 58, 0.030),
+    0 20px 55px rgba(0, 0, 0, 0.64) !important;
+}
+
+.interface-section .interface-shell::before {
+  background:
+    linear-gradient(102deg, transparent 0%, transparent 72%, rgba(255, 31, 58, 0.22) 73%, rgba(255, 31, 58, 0.055) 74.25%, transparent 76%, transparent 100%),
+    linear-gradient(100deg, transparent 0%, transparent 6%, rgba(230, 236, 242, 0.115) 7%, transparent 8.5%, transparent 100%) !important;
+}
+
+.interface-section .interface-status-bar,
+.interface-section .interface-core,
+.interface-section .interface-side-panel {
+  border-color: rgba(220, 228, 235, 0.22) !important;
+  background:
+    linear-gradient(145deg, rgba(31, 35, 40, 0.67), rgba(4, 5, 6, 0.95) 45%, rgba(0, 0, 0, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.032),
+    inset 0 0 38px rgba(255, 255, 255, 0.022),
+    0 18px 46px rgba(0, 0, 0, 0.58) !important;
+}
+
+.interface-section .interface-status-bar {
+  background:
+    linear-gradient(90deg, rgba(12, 14, 17, 0.98), rgba(0, 0, 0, 0.98) 48%, rgba(31, 34, 38, 0.92)) !important;
+  box-shadow:
+    inset 0 0 28px rgba(255, 255, 255, 0.026),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.030),
+    0 0 25px rgba(255, 31, 58, 0.10) !important;
+}
+
+.interface-section .interface-status-pill,
+.interface-section .interface-status-bar > span {
+  border-color: rgba(225, 232, 238, 0.26) !important;
+  background:
+    linear-gradient(145deg, rgba(47, 53, 60, 0.62), rgba(4, 5, 7, 0.93) 64%, rgba(0, 0, 0, 0.98)) !important;
+  color: #edf1f4 !important;
+  text-shadow:
+    0 0 8px rgba(245, 248, 250, 0.26),
+    0 1px 2px rgba(0, 0, 0, 0.96) !important;
+}
+
+.interface-section .interface-status-pill i,
+.interface-section .interface-status-bar i,
+.interface-section .interface-set-button span,
+.interface-section .interface-system-list li::before,
+.interface-section .interface-playback-dot,
+.interface-section .interface-cursor {
+  background: #ff243f !important;
+  box-shadow:
+    0 0 10px rgba(255, 36, 63, 0.95),
+    0 0 24px rgba(255, 31, 58, 0.48),
+    0 0 44px rgba(255, 145, 157, 0.16) !important;
+}
+
+.interface-section .interface-rail {
+  border-color: rgba(255, 31, 58, 0.26) !important;
+  background:
+    radial-gradient(circle at 15% 93%, rgba(222, 229, 236, 0.08), transparent 26%),
+    linear-gradient(145deg, rgba(25, 27, 31, 0.88), rgba(5, 6, 8, 0.96) 58%, rgba(0, 0, 0, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.033),
+    inset 0 0 42px rgba(255, 31, 58, 0.035),
+    0 18px 48px rgba(0, 0, 0, 0.60) !important;
+}
+
+.interface-section .interface-rail-label,
+.interface-section .interface-output-label,
+.interface-section .interface-response .panel-label,
+.interface-section .interface-core .panel-label,
+.interface-section .interface-core [data-interface-kicker],
+.interface-section .interface-core .interface-command-prefix,
+.interface-section .interface-core .interface-showcase-caption span,
+.interface-section .interface-side-panel [data-interface-output-label],
+.interface-section .interface-module-card small,
+.interface-section .interface-video-card small,
+.interface-section .interface-signal-pulse span,
+.interface-section .interface-media-toggle span {
+  color: #ff6b7d !important;
+  text-shadow:
+    0 0 9px rgba(255, 31, 58, 0.42),
+    0 0 21px rgba(255, 31, 58, 0.16) !important;
+}
+
+.interface-section .interface-rail-subtitle,
+.interface-section .interface-copy,
+.interface-section .interface-system-list,
+.interface-section .interface-output-card,
+.interface-section .interface-output-card-soft,
+.interface-section .interface-response,
+.interface-section .interface-showcase-caption,
+.interface-section .interface-playback-status {
+  color: #cdd3d8 !important;
+}
+
+.interface-section .interface-title,
+.interface-section .interface-command-text,
+.interface-section .interface-path strong,
+.interface-section .interface-output-card strong,
+.interface-section .interface-jump-link,
+.interface-section .interface-module-card strong,
+.interface-section .interface-video-card strong {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.20),
+    0 0 18px rgba(255, 31, 58, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.94) !important;
+}
+
+.interface-section .interface-command-line {
+  border-color: rgba(232, 238, 244, 0.30) !important;
+  background:
+    linear-gradient(90deg, rgba(50, 55, 61, 0.46), rgba(0, 0, 0, 0.96) 34%, rgba(0, 0, 0, 0.99) 70%, rgba(72, 74, 79, 0.42)) !important;
+  box-shadow:
+    inset 0 0 34px rgba(255, 255, 255, 0.034),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.032),
+    0 0 30px rgba(255, 31, 58, 0.12) !important;
+}
+
+.interface-section .interface-command-prefix {
+  color: #f2f5f7 !important;
+}
+
+.interface-section .interface-command-text {
+  background: #030303 !important;
+  border-left: 2px solid rgba(255, 31, 58, 0.42) !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.74) !important;
+}
+
+.interface-section .interface-set-button {
+  border-color: rgba(224, 231, 238, 0.25) !important;
+  background: linear-gradient(145deg, rgba(44, 49, 55, 0.62), rgba(3, 4, 6, 0.92)) !important;
+}
+
+.interface-section .interface-set-button.is-active {
+  border-color: rgba(255, 78, 98, 0.56) !important;
+  box-shadow:
+    0 0 18px rgba(255, 31, 58, 0.22),
+    inset 0 0 18px rgba(255, 255, 255, 0.028) !important;
+}
+
+.interface-section .interface-path,
+.interface-section .interface-module-card,
+.interface-section .interface-video-card,
+.interface-section .interface-output-card,
+.interface-section .interface-output-card-soft,
+.interface-section .interface-response,
+.interface-section .interface-showcase-frame,
+.interface-section .interface-video-frame {
+  border-color: rgba(214, 224, 232, 0.18) !important;
+  background:
+    linear-gradient(145deg, rgba(32, 37, 42, 0.60), rgba(5, 6, 8, 0.94) 54%, rgba(0, 0, 0, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.026),
+    inset 0 0 28px rgba(255, 255, 255, 0.018),
+    0 15px 38px rgba(0, 0, 0, 0.52) !important;
+}
+
+.interface-section .interface-path.is-active,
+.interface-section .interface-path:hover,
+.interface-section .interface-path:focus-visible,
+.interface-section .interface-module-card:hover,
+.interface-section .interface-module-card:focus-visible,
+.interface-section .interface-module-card.is-active,
+.interface-section .interface-video-card:hover,
+.interface-section .interface-video-card:focus-visible,
+.interface-section .interface-video-card.is-active {
+  border-color: rgba(255, 54, 80, 0.62) !important;
+  background:
+    linear-gradient(145deg, rgba(59, 22, 27, 0.70), rgba(8, 8, 10, 0.95) 53%, rgba(0, 0, 0, 0.98)) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.040),
+    0 0 24px rgba(255, 31, 58, 0.22),
+    inset 0 0 30px rgba(255, 255, 255, 0.028) !important;
+}
+
+.interface-section .interface-output-card,
+.interface-section .interface-output-card-soft {
+  background:
+    linear-gradient(145deg, rgba(50, 56, 63, 0.55), rgba(6, 7, 9, 0.94) 56%, rgba(0, 0, 0, 0.99)) !important;
+}
+
+.interface-section .interface-module-card:nth-of-type(1),
+.interface-section .interface-video-card:nth-of-type(1) {
+  border-color: rgba(217, 227, 235, 0.22) !important;
+  background:
+    linear-gradient(145deg, rgba(34, 41, 47, 0.62), rgba(4, 5, 7, 0.94) 55%, rgba(0, 0, 0, 0.98)) !important;
+}
+
+.interface-section .interface-module-card:nth-of-type(2),
+.interface-section .interface-video-card:nth-of-type(2) {
+  border-color: rgba(255, 31, 58, 0.28) !important;
+  background:
+    linear-gradient(145deg, rgba(45, 20, 26, 0.60), rgba(5, 5, 7, 0.95) 55%, rgba(0, 0, 0, 0.98)) !important;
+}
+
+.interface-section .interface-module-card:nth-of-type(3),
+.interface-section .interface-video-card:nth-of-type(3) {
+  border-color: rgba(255, 83, 104, 0.36) !important;
+  background:
+    linear-gradient(145deg, rgba(63, 20, 27, 0.62), rgba(5, 5, 7, 0.95) 55%, rgba(0, 0, 0, 0.98)) !important;
+}
+
+.interface-section .interface-module-orb,
+.interface-section .interface-video-orb,
+.interface-section .interface-orb-core,
+.interface-section .interface-hero-orb {
+  color: #ffffff !important;
+  border-color: rgba(238, 244, 248, 0.36) !important;
+  background:
+    radial-gradient(circle at 31% 23%, rgba(255, 255, 255, 0.62), transparent 22%),
+    radial-gradient(circle at 56% 58%, rgba(255, 31, 58, 0.34), rgba(64, 68, 74, 0.24) 48%, rgba(0, 0, 0, 0.72) 100%) !important;
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.105),
+    0 0 17px rgba(255, 31, 58, 0.24),
+    0 0 36px rgba(255, 255, 255, 0.08) !important;
+  text-shadow: 0 0 10px rgba(255, 225, 230, 0.62) !important;
+}
+
+.interface-section .interface-module-orb::after,
+.interface-section .interface-video-orb::after,
+.interface-section .interface-hero-orb::after {
+  background:
+    radial-gradient(circle, rgba(255, 72, 94, 0.90), rgba(152, 24, 39, 0.34) 44%, transparent 70%) !important;
+}
+
+.interface-section .interface-signal-pulse {
+  border-color: rgba(255, 50, 76, 0.40) !important;
+  background:
+    linear-gradient(145deg, rgba(76, 23, 31, 0.64), rgba(7, 8, 10, 0.94) 56%, rgba(0, 0, 0, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.030),
+    0 0 26px rgba(255, 31, 58, 0.18) !important;
+}
+
+.interface-section .interface-media-toggle,
+.interface-section .interface-jump-link {
+  border-color: rgba(255, 54, 80, 0.54) !important;
+  background:
+    linear-gradient(135deg, rgba(48, 53, 60, 0.72), rgba(8, 9, 11, 0.94) 42%, rgba(92, 17, 29, 0.72)) !important;
+  box-shadow:
+    inset 0 0 22px rgba(255, 255, 255, 0.035),
+    0 0 24px rgba(255, 31, 58, 0.20) !important;
+}
+
+.interface-section .interface-jump-link:hover,
+.interface-section .interface-jump-link:focus-visible,
+.interface-section .interface-media-toggle:hover,
+.interface-section .interface-media-toggle:focus-visible {
+  border-color: rgba(255, 92, 112, 0.72) !important;
+  background:
+    linear-gradient(135deg, rgba(76, 81, 88, 0.80), rgba(10, 10, 12, 0.95) 39%, rgba(142, 18, 34, 0.84)) !important;
+  box-shadow:
+    inset 0 0 24px rgba(255, 255, 255, 0.045),
+    0 0 30px rgba(255, 31, 58, 0.30) !important;
+}
+
+.interface-section .interface-signal-pulse button,
+.interface-section .interface-media-toggle button,
+.interface-section .interface-playback-toggle,
+.interface-section .interface-audio-toggle,
+.interface-section .interface-sound-toggle,
+.interface-section button[data-interface-media-control] {
+  border-color: rgba(255, 61, 84, 0.55) !important;
+  background:
+    linear-gradient(145deg, rgba(231, 236, 241, 0.17), rgba(10, 10, 12, 0.92) 46%, rgba(120, 16, 30, 0.66)) !important;
+  color: #ffffff !important;
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.070),
+    0 0 18px rgba(255, 31, 58, 0.20) !important;
+}
+
+.interface-section .interface-signal-pulse button:hover,
+.interface-section .interface-signal-pulse button:focus-visible,
+.interface-section .interface-media-toggle button:hover,
+.interface-section .interface-media-toggle button:focus-visible,
+.interface-section .interface-playback-toggle:hover,
+.interface-section .interface-playback-toggle:focus-visible,
+.interface-section .interface-audio-toggle:hover,
+.interface-section .interface-audio-toggle:focus-visible,
+.interface-section .interface-sound-toggle:hover,
+.interface-section .interface-sound-toggle:focus-visible,
+.interface-section button[data-interface-media-control]:hover,
+.interface-section button[data-interface-media-control]:focus-visible {
+  border-color: rgba(255, 104, 122, 0.74) !important;
+  background:
+    linear-gradient(145deg, rgba(246, 249, 251, 0.22), rgba(15, 15, 17, 0.93) 42%, rgba(184, 18, 38, 0.82)) !important;
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.085),
+    0 0 24px rgba(255, 31, 58, 0.34) !important;
+}
+
+.interface-section .interface-system-list li {
+  color: #dce2e7 !important;
+}
+
+.interface-section .interface-showcase-frame::before,
+.interface-section .interface-video-frame::before {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.10), transparent 28%, transparent 65%, rgba(255, 31, 58, 0.10)) !important;
+}
+
+.interface-section .interface-video-frame iframe,
+.interface-section .interface-showcase-frame img {
+  filter: contrast(1.06) saturate(0.98) brightness(0.92) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .interface-section .interface-status-pill i,
+  .interface-section .interface-status-bar i,
+  .interface-section .interface-cursor,
+  .interface-section .interface-playback-dot {
+    animation-duration: 3.8s !important;
+  }
+}
+/* =========================
+   WINTERFACE THEME SCOPE FIX - WInterface Shell Only
+   Keeps the custom theme on the WInterface itself and removes the theme wash
+   from the page area behind it. CSS-only: no HTML, JS, layout, content,
+   audio, or rail-spacing changes.
+========================= */
+
+.interface-section {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep the normal section divider/transition line instead of allowing a full-width themed wash. */
+.interface-section::before {
+  opacity: 1 !important;
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,0.48), rgba(139,92,246,0.42), rgba(236,72,153,0.28), transparent) !important;
+  background-size: auto !important;
+}
+
+/* Disable full-section decorative overlays. The actual theme remains on .interface-shell and child panels. */
+.interface-section::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.interface-section .interface-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.interface-section .interface-shell::before,
+.interface-section .interface-shell::after,
+.interface-section .interface-ambient {
+  pointer-events: none;
+}
+
+.interface-section .interface-shell::before,
+.interface-section .interface-shell::after {
+  z-index: 0;
+}
+
+.interface-section .interface-ambient {
+  z-index: 1;
+}
+
+.interface-section .interface-status-bar,
+.interface-section .interface-grid {
+  position: relative;
+  z-index: 2;
+}
+
